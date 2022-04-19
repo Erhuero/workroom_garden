@@ -18,8 +18,18 @@ WA.onInit().then(() => {
         currentPopup = WA.ui.openPopup("tts2Popup","TTS 2 : Des containers dans notre paysage technologique",[]);
     })
 
+    WA.room.onEnterLayer('ttsZone_3').subscribe(() => {
+        currentPopup = WA.ui.openPopup("tts3Popup","TTS 3: Accessibilité et le Handicap",[]);
+    })
+
+    WA.room.onEnterLayer('ttsZone_4').subscribe(() => {
+        currentPopup = WA.ui.openPopup("tts3Popup","TTS 4: Pratiques centrées utilisateurs : l'UX research",[]);
+    })
+
     WA.room.onLeaveLayer('ttsZone_1').subscribe(closePopUp)
     WA.room.onLeaveLayer('ttsZone_2').subscribe(closePopUp)
+    WA.room.onLeaveLayer('ttsZone_3').subscribe(closePopUp)
+    WA.room.onLeaveLayer('ttsZone_4').subscribe(closePopUp)
 
 
     // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
