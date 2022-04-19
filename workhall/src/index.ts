@@ -23,13 +23,44 @@ WA.onInit().then(() => {
     })
 
     WA.room.onEnterLayer('ttsZone_4').subscribe(() => {
-        currentPopup = WA.ui.openPopup("tts3Popup","TTS 4: Pratiques centrées utilisateurs : l'UX research",[]);
+        currentPopup = WA.ui.openPopup("tts4Popup","TTS 4: Pratiques centrées utilisateurs : l'UX research",[]);
     })
+
+    WA.room.onEnterLayer('ttsZone_5').subscribe(() => {
+        currentPopup = WA.ui.openPopup("tts5Popup","TTS 5: Outillage Ansible, AWX et Maestro",[]);
+    })
+
+    WA.room.onEnterLayer('ttsZone_6_1').subscribe(() => {
+        currentPopup = WA.ui.openPopup("tts6_1Popup","TTS 6 partie 1: Intelligence Artificielle - Vulgarisation et démystification",[]);
+    })
+
+    WA.room.onEnterLayer('ttsZone_6_2').subscribe(() => {
+        currentPopup = WA.ui.openPopup("tts6_2Popup","TTS 6 partie 2: Cadrer et piloter les cas d’usage dans les mutuelles et les assurances",[]);
+    })
+
+    WA.room.onEnterLayer('ttsZone_7').subscribe(() => {
+        currentPopup = WA.ui.openPopup("tts7Popup", "TTS 7 : L’automatisation dans les projets applicatifs, accélérateur DevSecOps d’aujourd’hui et de demain",[]);
+    })
+
+    WA.room.onEnterLayer('ttsZone_8').subscribe(() => {
+        currentPopup = WA.ui.openPopup("tts8Popup","TTS 8 : L’écosystème des applications mobiles MGEN",[]);
+    })
+
+    WA.room.onEnterLayer('ttsZone_9').subscribe(() => {
+        currentPopup = WA.ui.openPopup("tts8Popup","TTS 9 : Les cas d’usage de la Blockchain",[]);
+    })
+
 
     WA.room.onLeaveLayer('ttsZone_1').subscribe(closePopUp)
     WA.room.onLeaveLayer('ttsZone_2').subscribe(closePopUp)
     WA.room.onLeaveLayer('ttsZone_3').subscribe(closePopUp)
     WA.room.onLeaveLayer('ttsZone_4').subscribe(closePopUp)
+    WA.room.onLeaveLayer('ttsZone_5').subscribe(closePopUp)
+    WA.room.onLeaveLayer('ttsZone_6_1').subscribe(closePopUp)
+    WA.room.onLeaveLayer('ttsZone_6_2').subscribe(closePopUp)
+    WA.room.onLeaveLayer('ttsZone_7').subscribe(closePopUp)
+    WA.room.onLeaveLayer('ttsZone_8').subscribe(closePopUp)
+    WA.room.onLeaveLayer('ttsZone_9').subscribe(closePopUp)
 
 
     // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
