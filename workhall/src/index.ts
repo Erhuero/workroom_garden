@@ -10,6 +10,22 @@ WA.onInit().then(() => {
     console.log('Scripting API ready');
     console.log('Player tags: ',WA.player.tags)
     
+    //===================================================================================
+    //Code du systeme de vote
+    //===================================================================================
+
+    WA.room.onEnterLayer('vote1').subscribe(() => {
+        (WA.state.votePremier as number)++;
+    })
+
+
+
+
+
+    //===================================================================================
+    //Code des fenetres Popup
+    //===================================================================================
+    
     WA.room.onEnterLayer('ttsZone_1').subscribe(() => {
         currentPopup = WA.ui.openPopup("tts1Popup","TTS 1 : Automatisation robotisée des processus (RPA)",[]);
     })
