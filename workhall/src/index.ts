@@ -3,6 +3,12 @@ import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 
 console.log('Script started successfully');
 
+
+// The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
+bootstrapExtra().then(() => {
+    console.log('Scripting API Extra ready');
+}).catch(e => console.error(e));
+
 let currentPopup: any = undefined;
 
 // Waiting for the API to be ready
@@ -13,14 +19,38 @@ WA.onInit().then(() => {
     //===================================================================================
     //Code du systeme de vote
     //===================================================================================
-
+    
     WA.room.onEnterLayer('vote1').subscribe(() => {
         (WA.state.votePremier as number)++;
     })
 
+    WA.room.onEnterLayer('vote1').subscribe(() => {
+        (WA.state.votePremier as number)--;
+    })
 
+    WA.room.onEnterLayer('vote2').subscribe(() => {
+        (WA.state.voteSecond as number)++;
+    })
 
+    WA.room.onEnterLayer('vote2').subscribe(() => {
+        (WA.state.voteSecond as number)--;
+    })
 
+    WA.room.onEnterLayer('vote3').subscribe(() => {
+        (WA.state.voteTroisieme as number)++;
+    })
+
+    WA.room.onEnterLayer('vote3').subscribe(() => {
+        (WA.state.voteTroisieme as number)--;
+    })
+
+    WA.room.onEnterLayer('vote4').subscribe(() => {
+        (WA.state.voteQuatrieme as number)++;
+    })
+
+    WA.room.onEnterLayer('vote4').subscribe(() => {
+        (WA.state.voteQuatrieme as number)--;
+    })
 
     //===================================================================================
     //Code des fenetres Popup
@@ -66,7 +96,6 @@ WA.onInit().then(() => {
         currentPopup = WA.ui.openPopup("tts8Popup","TTS 9 : Les cas d’usage de la Blockchain",[]);
     })
 
-
     WA.room.onLeaveLayer('ttsZone_1').subscribe(closePopUp)
     WA.room.onLeaveLayer('ttsZone_2').subscribe(closePopUp)
     WA.room.onLeaveLayer('ttsZone_3').subscribe(closePopUp)
@@ -77,12 +106,6 @@ WA.onInit().then(() => {
     WA.room.onLeaveLayer('ttsZone_7').subscribe(closePopUp)
     WA.room.onLeaveLayer('ttsZone_8').subscribe(closePopUp)
     WA.room.onLeaveLayer('ttsZone_9').subscribe(closePopUp)
-
-
-    // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
-    bootstrapExtra().then(() => {
-        console.log('Scripting API Extra ready');
-    }).catch(e => console.error(e));
     
 }).catch(e => console.error(e));
 
@@ -93,34 +116,3 @@ function closePopUp(){
         currentPopup = undefined;
     }
 }
-
-/*
-let messagePopup: any = undefined;
-
-// Waiting for the API to be ready
-WA.onInit().then(() => {
-    console.log('Scripting API ready');
-    console.log('Player tags: ',WA.player.tags)
-    
-    WA.room.onEnterLayer('ttsZone2').subscribe(() => {
-        currentPopup = WA.ui.openPopup("messagePopup","TTS 2 : Des containers dans notre paysage technologique",[]);
-    })
-
-    WA.room.onLeaveLayer('ttsZone2').subscribe(closeMessagePopUp)
-
-
-    // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
-    bootstrapExtra().then(() => {
-        console.log('Scripting API Extra ready');
-    }).catch(e => console.error(e));
-    
-}).catch(e => console.error(e));
-
-
-function closeMessagePopUp(){
-    if (messagePopup !== undefined) {
-        messagePopup.close();
-        messagePopup = undefined;
-    }
-}
-*/
