@@ -20,11 +20,12 @@ WA.onInit().then(() => {
     //Code du systeme de vote
     //===================================================================================
     
+  
     WA.room.onEnterLayer('vote1').subscribe(() => {
         (WA.state.votePremier as number)++;
     })
 
-    WA.room.onEnterLayer('vote1').subscribe(() => {
+    WA.room.onLeaveLayer('vote1').subscribe(() => {
         (WA.state.votePremier as number)--;
     })
 
@@ -32,7 +33,7 @@ WA.onInit().then(() => {
         (WA.state.voteSecond as number)++;
     })
 
-    WA.room.onEnterLayer('vote2').subscribe(() => {
+    WA.room.onLeaveLayer('vote2').subscribe(() => {
         (WA.state.voteSecond as number)--;
     })
 
@@ -40,7 +41,7 @@ WA.onInit().then(() => {
         (WA.state.voteTroisieme as number)++;
     })
 
-    WA.room.onEnterLayer('vote3').subscribe(() => {
+    WA.room.onLeaveLayer('vote3').subscribe(() => {
         (WA.state.voteTroisieme as number)--;
     })
 
@@ -48,7 +49,7 @@ WA.onInit().then(() => {
         (WA.state.voteQuatrieme as number)++;
     })
 
-    WA.room.onEnterLayer('vote4').subscribe(() => {
+    WA.room.onLeaveLayer('vote4').subscribe(() => {
         (WA.state.voteQuatrieme as number)--;
     })
 
