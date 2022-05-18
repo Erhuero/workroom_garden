@@ -23,7 +23,149 @@
             .poll-question {
                 font-weight: 608;
             }
-            
+            .poll-result-list{
+                list-style-type: none;                
+            }
+            .poll-answer-header{
+                list-style-type: none;
+                margin-right: 28px;
+                display:flex;
+                justify-content:space-between;
+                float: left;
+            }
+            .poll-answer-header{
+                list-style-type: none;
+                margin-right: 28px;
+                display: flex;
+                justify-content: space-between;
+                float:left;
+            }
+            .poll-answer-vote-name{
+                list-style-type: none;
+                margin-right: 28px;
+                display: flex;
+                justify-content: space-between;
+                float: left;
+            }
+            .poll-answer-short-results{
+                list-style-type: none;
+                display: flex;
+                min-width: 10en;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .poll-bar-container{
+                list-style-type: none;
+                border-radius: 2px;
+                height: 8px;
+                background-color: #d2d7df;
+                width: 50%;
+            }
+
+            #poll-bar-vote-a {
+                background-color: #34F17A;
+            }
+
+            #poll-bar-vote-b {
+                background-color: #315DFF;
+            }
+
+            #poll-bar-vote-c {
+                background-color: #F9E81E;
+            }
+
+            #poll-bar-vote-d {
+                background-color: #FF475A;
+            }
+
+            .poll-answer-vote-count-container{
+                list-style-type: none;
+                display: flex;
+            }
+
+            .poll-answer-vote-count{
+                list-style-type: none;
+                margin-left: 10px;
+                white-space: nowrap;
+                flex:1;
+                text-align:right;
+            }
         </style>
+
+        <script src="https://play.workadventu.re/iframe_api.js" ></script>
+        <script>
+
+            WA.onInit().then(() => {
+                 updatePoll(5, 10, 5, 18);
+
+            })
+
+            function updatePoll(votePremier = 0, voteSecond = 0, voteTroisieme = 0, voteQuatrieme = 0){
+                totalVotes = votePremier + voteSecond + voteTroisieme + voteQuatrieme;
+
+                document.getElementById("votePremier").innerHTML = votePremier;   
+                document.getElementById("voteSecond").innerHTML = voteSecond;   
+                document.getElementById("voteTroisieme").innerHTML = voteTroisieme;   
+                document.getElementById("voteQuatrieme").innerHTML = voteQuatrieme;
+                document.getElementById("totalVotes").innerHTML = totalVotes;
+                
+                let percentageVotePremier = totalVotes = 0 ? parseInt(votePremier/totalVotes * 100) + "%" : "0%";
+                let percentageVoteSecond = totalVotes = 0 ? parseInt(voteSecond/totalVotes * 100) + "%" : "0%";
+                let percentageVoteTroisieme = totalVotes = 0 ? parseInt(voteTroisieme/totalVotes * 100) + "%" : "0%";
+                let percentageVoteQuatrieme = totalVotes = 0 ? parseInt(voteQuatrieme/totalVotes * 100) + "%" : "0%";
+
+                document.getElementById("percentageFirstVote").innerHTML = document.getElementById("poll-bar-vote-a").style.width = percentageVotePremier;
+                document.getElementById("percentageVoteSecond").innerHTML = document.getElementById("poll-bar-vote-b").style.width = percentageVoteSecond;
+                document.getElementById("percentageVoteTroisieme").innerHTML = document.getElementById("poll-bar-vote-c").style.width = percentageVoteTroisieme;
+                document.getElementById("percentageVoteQuatrieme").innerHTML = document.getElementById("poll-bar-vote-d").style.width = percentageVoteQuatrieme;
+            }
+        </script>
     </head>
+    <body>
+        <div class='poll-results'>
+            <div class='poll-header'>
+                <div>
+                    <strong class = "poll-question">Resultats du vote</strong> <span>(<span id = "totalVotes">0</span> votes)</span>
+                </div>
+            </div>
+            <ol class="poll-result-list">
+                <li>
+                    <div class = "poll-answer-header"><span class ="poll-answer-vote-name">Zone A</span></div>
+                    <div class="poll-answer-short-results">
+                        <span class = 'poll-bar-container'><div class= "poll-bar" id = "poll-bar-vote-a" style = "width:8%;"></div></span>
+                        <div class="poll-answer-vote-count-container">
+                            <span class = "poll-answer-vote-count">(<span id = "votePremier">8</span>)<span id = "percentageVotePremier">8%</span></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class = "poll-answer-header"><span class ="poll-answer-vote-name">Zone B</span></div>
+                    <div class="poll-answer-short-results">
+                        <span class = 'poll-bar-container'><div class= "poll-bar" id = "poll-bar-vote-b" style = "width:8%;"></div></span>
+                        <div class="poll-answer-vote-count-container">
+                            <span class = "poll-answer-vote-count">(<span id = "voteSecond">8</span>)<span id = "percentageVoteSecond">8%</span></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class = "poll-answer-header"><span class ="poll-answer-vote-name">Zone C</span></div>
+                    <div class="poll-answer-short-results">
+                        <span class = 'poll-bar-container'><div class= "poll-bar" id = "poll-bar-vote-c" style = "width:8%;"></div></span>
+                        <div class="poll-answer-vote-count-container">
+                            <span class = "poll-answer-vote-count">(<span id = "voteTroisieme">8</span>)<span id = "percentageVoteTroisieme">8%</span></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class = "poll-answer-header"><span class ="poll-answer-vote-name">Zone D</span></div>
+                    <div class="poll-answer-short-results">
+                        <span class = 'poll-bar-container'><div class= "poll-bar" id = "poll-bar-vote-d" style = "width:8%;"></div></span>
+                        <div class="poll-answer-vote-count-container">
+                            <span class = "poll-answer-vote-count">(<span id = "voteQuatrieme">8</span>)<span id = "percentageVoteQuatrieme">8%</span></span>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </body>
 </html>

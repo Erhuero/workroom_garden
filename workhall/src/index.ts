@@ -20,8 +20,13 @@ WA.onInit().then(() => {
     //Code du systeme de vote
     //===================================================================================
     
-  
+    WA.state.votePremier = 0;
+    WA.state.voteSecond = 0;
+    WA.state.voteTroisieme = 0;
+    WA.state.voteQuatrieme = 0;
+
     WA.room.onEnterLayer('vote1').subscribe(() => {
+        
         (WA.state.votePremier as number)++;
     })
 
